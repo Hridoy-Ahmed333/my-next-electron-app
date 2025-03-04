@@ -1,0 +1,55 @@
+{
+  "name": "my-next-electron-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"next dev\" \"cross-env NODE_ENV=development electron .\"",
+    "build": "next build",
+    "export": "next export",
+    "package": "npm run build && electron-builder",
+    "start": "electron .",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "next": "^15.2.1",
+    "os-utils": "^0.0.14",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "electron": "^35.0.0",
+    "electron-builder": "^25.1.8",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.1",
+    "wait-on": "^8.0.2"
+  },
+  "main": "main/main.js",
+  "build": {
+    "appId": "com.example.next-electron",
+    "productName": "NextElectronApp",
+    "files": [
+      "main/**",
+      "out/**",
+      "node_modules/**",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "public/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "public/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "public/icon.png"
+    }
+  }
+}
